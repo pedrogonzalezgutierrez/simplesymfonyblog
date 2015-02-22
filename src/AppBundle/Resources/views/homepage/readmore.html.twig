@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	{% if articles is not empty %}
+	
+		{% include 'AppBundle:article:list.html.twig' with {'articles': articles} only %}
+				
+		{% include
+			'AppBundle:form:Paginator.html.twig'
+			with {
+				'page': page,
+				'maxPages': maxPages,
+				'maxResults': maxResults,
+				'absoluteurl': 'readmore',
+				'selectMaxResults': true
+			} only
+		%}
+	
+			
+	{% else %}
+		{% include 'AppBundle:form:ThereIsNoItems.html.twig' with {'nameEntity': 'entity.article.plural'|trans} only %}		
+    {% endif %}
+    
+{% endblock %}

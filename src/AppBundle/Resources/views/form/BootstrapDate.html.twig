@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="text-center"><strong>{{ title }}</strong></div>
+		<br/>
+		<div class="row">	
+			<div class="col-md-3"></div>
+			{% for item in form %}
+				<div class="col-md-2">
+					{{ form_widget(item, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			{% endfor %}
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+</div>

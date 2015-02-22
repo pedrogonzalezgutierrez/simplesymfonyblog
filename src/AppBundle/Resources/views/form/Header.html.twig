@@ -1,0 +1,25 @@
+{% if action == 1 %}
+	<!-- Create -->
+	<div role="alert" class="alert text-center alert-success">
+		<h3>{{ 'action.create'|trans }} {{ nameEntity }}</h3>
+	</div>
+	
+{% elseif action == 2 %}
+	<!-- Update -->
+	<div role="alert" class="alert text-center alert-info">
+		<h3>{{ 'action.update'|trans  }} {{ nameEntity }}</h3>
+	</div>
+	
+{% elseif action == 3 %}	
+	<!-- Manage -->
+	<div role="alert" class="alert text-center alert-success">
+		<h3>{{ 'action.manage'|trans }} {{ nameEntity }}</h3>
+	</div>
+	
+{% elseif action == 4 %}	
+	<!-- Manage -->
+	<div role="alert" class="alert text-center alert-success">
+		<h3>{{ 'search.find'|trans }} {{ nameEntity }}</h3>
+	</div>
+
+{% endif %}

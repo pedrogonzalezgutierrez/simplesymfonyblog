@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	{% include 'AppBundle:form:Header.html.twig' with {'action': 4, 'nameEntity': 'entity.article.plural'|trans } only %}
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{ 'search.bytitle'|trans }}</h3>
+		</div>	
+		<div class="panel-body">
+			{{ form_start(formSearchByTitle) }}
+			
+				<!-- Input title -->
+				{% include
+					'AppBundle:form:BootstrapInput.html.twig'
+					with {
+						'id': formSearchByTitle.title.vars.id,
+						'title': 'entity.article.articleTitle'|trans,
+						'full_name': formSearchByTitle.title.vars.full_name,
+						'value': formSearchByTitle.title.vars.value,
+						'errors': formSearchByTitle.title.vars.errors,
+						'errors_form': formSearchByTitle.title, 
+					} only
+				%}
+				
+				<!-- CSRF -->
+				{{ form_widget(formSearchByTitle._token) }}
+				
+				<br/>
+				
+				<!-- Button Submit -->
+				{% include
+					'AppBundle:form:BootstrapButtonSubmit.html.twig'
+					with {
+						'action': 4
+					} only
+				%}
+			
+			{{ form_end(formSearchByTitle, {'render_rest': false}) }}
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{ 'search.bytags'|trans }}</h3>
+		</div>	
+		<div class="panel-body">
+		    <nav>
+		      <ul class="pagination pagination-lg">
+				{% for tag in tags %}
+					<li><a href="{{ path('show_tag', {'tag': tag.id}) }}">{{ tag.tagName }}</a></li>				
+				{% endfor %}
+		      </ul>
+		    </nav>
+		</div>
+	</div>
+		
+		
+    
+{% endblock %}
+

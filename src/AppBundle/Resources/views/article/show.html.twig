@@ -1,0 +1,119 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{% trans %}blog.name{% endtrans %}: {{ article.articleTitle }}{% endblock %}
+
+{% block body %}
+
+	<div class="alert alert-success text-center" role="alert">
+		<h3>{{ article.articleTitle}}</h3>
+		<h4><small> {{ article.articleCreationDate|date("d/m/Y") }}</small></h4>
+		{% for item in article.tags %}
+			[{{ item.tagName }}]
+		{% endfor %}
+	</div>
+	
+	<div class="panel panel-warning">
+		<div class="panel-body">{{ article.articleDescription|raw }}</div>
+	</div>
+		
+	<div class="panel panel-info">
+		<div class="panel-body">{{ article.articleContent|raw }}</div>
+	</div>
+	
+	
+	
+
+	<!-- Comments -->
+	<br/><br/>
+	<h3><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color:green"></span> {{ 'entity.comment.plural'|trans }}</h3>
+	{% if article.comments is not empty %}
+		{% for item in article.comments %}
+			{% if item.commentAccepted == true %}
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p><strong>{{ item.commentAuthor }}</strong>
+							{% if app.user and item.commentAuthorEmail is not empty %}
+								({{ item.commentAuthorEmail }})
+							{% endif %}
+						{{ 'action.saidat'|trans }} <em>{{ item.commentCreationDate|date("d/m/Y") }}</em></p>
+						{{ item.commentContent|nl2br }}
+						<br/>
+					</div>
+				</div>		
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	
+	<!-- Add new comment -->
+	<br/><br/>
+	{{ form_start(form) }}
+	
+		<!-- Submit -->
+		<button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:orange"></span> {{ 'action.add'|trans }} {{ 'entity.comment'|trans }}</button>
+		
+		<br/><br/>
+	
+		<!-- Input tagName -->
+		{% include
+			'AppBundle:form:BootstrapInput.html.twig'
+			with {
+				'id': form.commentAuthor.vars.id,
+				'title': 'entity.comment.author'|trans,
+				'full_name': form.commentAuthor.vars.full_name,
+				'value': form.commentAuthor.vars.value,
+				'errors': form.commentAuthor.vars.errors,
+				'errors_form': form.commentAuthor, 
+			} only
+		%}
+		
+		<br/>
+		
+		<!-- Input commentAuthorEmail -->
+		{% include
+			'AppBundle:form:BootstrapInput.html.twig'
+			with {
+				'id': form.commentAuthorEmail.vars.id,
+				'title': 'entity.comment.authoremail'|trans ~ ' ' ~ 'warning.optional'|trans,
+				'full_name': form.commentAuthorEmail.vars.full_name,
+				'value': form.commentAuthorEmail.vars.value,
+				'errors': form.commentAuthorEmail.vars.errors,
+				'errors_form': form.commentAuthorEmail, 
+			} only
+		%}
+		
+		<!-- Textarea articleTitle -->
+		{% include
+			'AppBundle:form:BootstrapTextarea.html.twig'
+			with {
+				'id': form.commentContent.vars.id,
+				'title': '',
+				'full_name': form.commentContent.vars.full_name,
+				'value': form.commentContent.vars.value,
+				'errors': form.commentContent.vars.errors,
+				'errors_form': form.commentContent, 
+				'rows': 6
+			} only
+		%}
+		
+		<!-- CSRF -->
+		{{ form_widget(form._token) }}
+
+		
+	{{ form_end(form, {'render_rest': false}) }}
+		
+	<div class="alert alert-warning text-center" role="alert"><h5>{{ 'warning.commentsarereviewed'|trans }}</h5></div>
+	
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+{% endblock %}
+

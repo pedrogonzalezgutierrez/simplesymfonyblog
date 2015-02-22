@@ -1,0 +1,37 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+	
+	{% include 'AppBundle:form:Header.html.twig' with {'action': action, 'nameEntity': 'entity.tag'|trans } only %}		    	
+	
+	{{ form_start(form) }}
+	
+		<!-- Input tagName -->
+		{% include
+			'AppBundle:form:BootstrapInput.html.twig'
+			with {
+				'id': form.tagName.vars.id,
+				'title': 'entity.tag.tagname'|trans,
+				'full_name': form.tagName.vars.full_name,
+				'value': form.tagName.vars.value,
+				'errors': form.tagName.vars.errors,
+				'errors_form': form.tagName, 
+			} only
+		%}
+		
+		<!-- CSRF -->
+		{{ form_widget(form._token) }}
+	
+		<br/>
+	
+		<!-- Button Submit -->
+		{% include
+			'AppBundle:form:BootstrapButtonSubmit.html.twig'
+			with {
+				'action': action
+			} only
+		%}
+		
+	{{ form_end(form, {'render_rest': false}) }}
+    
+{% endblock %}

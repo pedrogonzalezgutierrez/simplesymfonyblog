@@ -1,0 +1,66 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	{% include 'AppBundle:form:Header.html.twig' with {'action': 3, 'nameEntity': 'entity.tag.plural'|trans } only %}
+	
+	{% if items is not empty %}
+	
+		<div class="table-responsive">
+		
+			<table class="table table-hover table-condensed">
+			
+				<thead>
+					<tr class="active">
+			            <th class="text-center">{{ 'entity.tag.tagname'|trans }}</th>
+			            <th class="text-center">{{ 'entity.tag.numberofarticles'|trans }}</th>
+			            <th class="text-center">{{ 'action.update'|trans }}</th>
+			            <th class="text-center">{{ 'action.delete'|trans }}</th>
+					</tr>
+				</thead>
+						
+				<tbody>
+					{% for item in items %}
+						<tr>
+
+			            	<th scope="row" class="text-center">{{ item.tagName }}</th>
+			            	<td class="text-center">{{ item.articles|length }}</td>
+			            	
+							{% include
+								'AppBundle:form:TableButtonUpdate.html.twig'
+								with {
+									'id': item.id,
+									'absoluteurl': 'update_tag'
+								} only
+							%}
+							
+							{% include
+								'AppBundle:form:TableButtonDelete.html.twig'
+								with {
+									'id': item.id,
+									'absoluteurl': 'delete_tag'
+								} only
+							%}
+							
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		
+		{% include
+			'AppBundle:form:Paginator.html.twig'
+			with {
+				'page': page,
+				'maxPages': maxPages,
+				'maxResults': maxResults,
+				'absoluteurl': 'manage_tags',
+				'selectMaxResults': true
+			} only
+		%}
+		
+	{% else %}
+		{% include 'AppBundle:form:ThereIsNoItems.html.twig' with {'nameEntity': 'entity.tag.plural'|trans} only %}		
+    {% endif %}
+    
+{% endblock %}

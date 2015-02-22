@@ -1,0 +1,63 @@
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+	{% include 'AppBundle:form:Header.html.twig' with {'action': action, 'nameEntity': 'entity.article'|trans } only %}
+	
+	{{ form_start(form) }}
+	
+		<!-- Input articleTitle -->
+		{% include
+			'AppBundle:form:BootstrapInput.html.twig'
+			with {
+				'id': form.articleTitle.vars.id,
+				'title': 'entity.article.articleTitle'|trans,
+				'full_name': form.articleTitle.vars.full_name,
+				'value': form.articleTitle.vars.value,
+				'errors': form.articleTitle.vars.errors,
+				'errors_form': form.articleTitle, 
+			} only
+		%}
+		<br/>
+		
+		<!-- Date articleCreationDate -->
+		{% include
+			'AppBundle:form:BootstrapDate.html.twig'
+			with {
+			'title': 'entity.article.articleCreationDate'|trans,
+			'form': form.articleCreationDate
+			} only
+		%}
+		
+		<!-- Choice articlePublished -->
+		{% include
+			'AppBundle:form:BootstrapChoice.html.twig'
+			with {
+				'title': 'entity.article.articlePublished'|trans,
+				'form': form.articlePublished
+			} only
+		%}
+		
+		<!-- Textarea articleDescription -->
+		{{ form_row(form.articleDescription) }}
+		<br/>
+		
+		<!-- Textarea articleContent -->
+		{{ form_row(form.articleContent) }}
+		<br/>
+		
+		
+		<!-- CSRF -->
+		{{ form_widget(form._token) }}
+		
+		<!-- Button Submit -->
+		{% include
+			'AppBundle:form:BootstrapButtonSubmit.html.twig'
+			with {
+				'action': action
+			} only
+		%}
+		
+	{{ form_end(form, {'render_rest': false}) }}
+    
+{% endblock %}

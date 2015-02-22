@@ -1,0 +1,55 @@
+AppBundle\Entity\Article:
+    properties:
+        articleTitle:
+            - NotBlank: ~
+            - Length:
+                min: 5
+                max: 255
+                
+        articleDescription:
+            - NotBlank: ~
+            - Length:
+                min: 15
+                max: 2000
+                
+        articleContent:
+            - NotBlank: ~
+            - Length:
+                min: 100
+                
+        articleCreationDate:
+            - NotBlank: ~
+
+            
+AppBundle\Entity\Tag:
+    properties:
+        tagName:
+            - NotBlank: ~
+            - Length:
+                min: 3
+                max: 255
+
+            
+AppBundle\Entity\Comment:
+    properties:
+        commentAuthor:
+            - NotBlank: ~
+            - Length:
+                max: 45
+        commentAuthorEmail:
+            - Length:
+                max: 45
+        commentContent:
+            - NotBlank: ~
+            - Length:
+                max: 2000                
+                
+                
+AppBundle\Search\SearchByTitle:
+    properties:
+        title:
+            - NotBlank: ~
+            - Length:
+                min: 3
+                max: 255
+                

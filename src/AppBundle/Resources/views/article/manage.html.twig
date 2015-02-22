@@ -1,0 +1,84 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	{% include 'AppBundle:form:Header.html.twig' with {'action': 3, 'nameEntity': 'entity.article.plural'|trans } only %}
+		
+	{% if items is not empty %}
+	
+		<div class="table-responsive">
+		
+			<table class="table table-hover table-condensed">
+			
+				<thead>
+					<tr class="active">
+			            <th class="text-center">{{ 'entity.article.articleTitle'|trans }}</th>
+			            <th class="text-center">{{ 'entity.article.articleCreationDate'|trans }}</th>
+			            <th class="text-center">{{ 'entity.article.articlePublished'|trans }}</th>
+			            <th class="text-center">{{ 'entity.tag.plural'|trans }}</th>
+			            <th class="text-center">{{ 'action.update'|trans }}</th>
+			            <th class="text-center">{{ 'action.delete'|trans }}</th>
+					</tr>
+				</thead>
+						
+				<tbody>
+					{% for item in items %}
+						<tr>
+
+			            	<th scope="row" class="text-center">{{ item.articleTitle }}</th>
+			            	<td class="text-center">{{ item.articleCreationDate|date("d/m/Y") }}</td>
+			            	<td class="text-center">
+			            		{% if item.articlePublished == true %}
+			            			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			            		{% else %}
+			            			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			            		{% endif %}
+			            	</td>
+			            	<td class="text-center">
+			            		{% if item.tags is empty %}
+			            			<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+			            		{% else %}			            		
+				            		{% for tag in item.tags %}
+				            			[{{ tag.tagName }}]
+				            		{% endfor %}			            		
+			            		{% endif %}
+			            	</td>
+			            	
+							{% include
+								'AppBundle:form:TableButtonUpdate.html.twig'
+								with {
+									'id': item.id,
+									'absoluteurl': 'update_article'
+								} only
+							%}
+							
+							{% include
+								'AppBundle:form:TableButtonDelete.html.twig'
+								with {
+									'id': item.id,
+									'absoluteurl': 'delete_article'
+								} only
+							%}
+							
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		
+		{% include
+			'AppBundle:form:Paginator.html.twig'
+			with {
+				'page': page,
+				'maxPages': maxPages,
+				'maxResults': maxResults,
+				'absoluteurl': 'manage_articles',
+				'selectMaxResults': true
+			} only
+		%}
+		
+	{% else %}
+		{% include 'AppBundle:form:ThereIsNoItems.html.twig' with {'nameEntity': 'entity.article.plural'|trans} only %}		
+    {% endif %}
+    
+{% endblock %}

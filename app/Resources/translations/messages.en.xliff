@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+        
+            <trans-unit id="1-1">            
+                <source>blog.name</source>
+                <target>SimpleSB</target>
+            </trans-unit>
+            <trans-unit id="1-2">            
+                <source>blog.title</source>
+                <target>Simple Symfony Blog</target>
+            </trans-unit>
+            
+            <trans-unit id="2-1">
+            	<source>nav.home</source>
+            	<target>Home</target>
+            </trans-unit>
+            <trans-unit id="2-2">
+            	<source>nav.search</source>
+            	<target>Search</target>
+            </trans-unit>
+            <trans-unit id="2-3">
+            	<source>nav.about</source>
+            	<target>About</target>
+            </trans-unit>
+            
+            <trans-unit id="3-1">            
+                <source>locale.english</source>
+                <target>English</target>
+            </trans-unit>
+            <trans-unit id="3-2">            
+                <source>locale.spanish</source>
+                <target>Spanish</target>
+            </trans-unit>
+            
+            <trans-unit id="4-1">            
+                <source>login.login</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="4-2">            
+                <source>login.logout</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="4-3">            
+                <source>login.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="4-4">            
+                <source>login.username.placeholder</source>
+                <target>Type your username</target>
+            </trans-unit>            
+            <trans-unit id="4-5">            
+                <source>login.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="4-6">            
+                <source>login.password.placeholder</source>
+                <target>Type your password</target>
+            </trans-unit>
+            <trans-unit id="4-7">            
+                <source>login.enter</source>
+                <target>Enter</target>
+            </trans-unit>
+            
+            <trans-unit id="5-1">
+            	<source>role.admin</source>
+            	<target>Admin</target>
+            </trans-unit>
+            
+            <trans-unit id="6-1">
+            	<source>entity.article</source>
+            	<target>Article</target>
+            </trans-unit>
+            <trans-unit id="6-2">
+            	<source>entity.article.plural</source>
+            	<target>Articles</target>
+            </trans-unit>
+            <trans-unit id="6-3">
+            	<source>entity.article.articleTitle</source>
+            	<target>Title</target>
+            </trans-unit>
+            <trans-unit id="6-4">
+            	<source>entity.article.articleCreationDate</source>
+            	<target>Creation Date</target>
+            </trans-unit>
+            <trans-unit id="6-5">
+            	<source>entity.article.articlePublished</source>
+            	<target>Published</target>
+            </trans-unit>
+            <trans-unit id="6-6">
+            	<source>entity.article.articleDescription</source>
+            	<target>Description</target>
+            </trans-unit>
+            <trans-unit id="6-7">
+            	<source>entity.article.articleContent</source>
+            	<target>Content</target>
+            </trans-unit>            
+
+            <trans-unit id="7-1">
+            	<source>entity.tag</source>
+            	<target>Tag</target>
+            </trans-unit>
+            <trans-unit id="7-2">
+            	<source>entity.tag.plural</source>
+            	<target>Tags</target>
+            </trans-unit>
+            <trans-unit id="7-3">
+            	<source>entity.tag.tagname</source>
+            	<target>Tag Name</target>
+            </trans-unit>
+            <trans-unit id="7-4">
+            	<source>entity.tag.numberofarticles</source>
+            	<target>Number of articles</target>
+            </trans-unit>
+                        
+            <trans-unit id="8-1">
+            	<source>entity.comment</source>
+            	<target>Comment</target>
+            </trans-unit>
+            <trans-unit id="8-2">
+            	<source>entity.comment.plural</source>
+            	<target>Comments</target>
+            </trans-unit>
+            <trans-unit id="8-3">
+            	<source>entity.comment.author</source>
+            	<target>Author</target>
+            </trans-unit>
+            <trans-unit id="8-4">
+            	<source>entity.comment.authoremail</source>
+            	<target>Email</target>
+            </trans-unit>
+            
+            <trans-unit id="9-1">
+            	<source>action.manage</source>
+            	<target>Manage</target>
+            </trans-unit>
+            <trans-unit id="9-2">
+            	<source>action.create</source>
+            	<target>New</target>
+            </trans-unit>
+            <trans-unit id="9-3">
+            	<source>action.update</source>
+            	<target>Update</target>
+            </trans-unit>
+            <trans-unit id="9-4">
+            	<source>action.delete</source>
+            	<target>Delete</target>
+            </trans-unit>
+            <trans-unit id="9-5">
+            	<source>action.add</source>
+            	<target>Add</target>
+            </trans-unit>
+            <trans-unit id="9-6">
+            	<source>action.readmore</source>
+            	<target>Read more</target>
+            </trans-unit>
+            <trans-unit id="9-7">
+            	<source>action.yes</source>
+            	<target>Yes</target>
+            </trans-unit>
+            <trans-unit id="9-8">
+            	<source>action.no</source>
+            	<target>No</target>
+            </trans-unit>
+            <trans-unit id="9-9">
+            	<source>action.back</source>
+            	<target>Back</target>
+            </trans-unit>
+            <trans-unit id="9-10">
+            	<source>action.saidat</source>
+            	<target>said at</target>
+            </trans-unit>
+            
+            <trans-unit id="10-1">
+            	<source>modal.areyousure</source>
+            	<target>Are you sure?</target>
+            </trans-unit>
+            <trans-unit id="10-2">
+            	<source>modal.datalose</source>
+            	<target>You will not be able to recover your data</target>
+            </trans-unit>
+            
+            <trans-unit id="11-1">
+            	<source>error.thereisno</source>
+            	<target>There is no</target>
+            </trans-unit>            
+            <trans-unit id="11-2">
+            	<source>error.exception.uniqueconstraintviolation</source>
+            	<target>The item is already created</target>
+            </trans-unit>
+            <trans-unit id="11-3">
+            	<source>error.exception.generic</source>
+            	<target>There was a problem. Operation Cancelled</target>
+            </trans-unit>
+            
+            <trans-unit id="12-1">
+            	<source>warning.commentsarereviewed</source>
+            	<target>Comments are reviewed</target>
+            </trans-unit>
+            <trans-unit id="12-2">
+            	<source>warning.optional</source>
+            	<target>(Optional)</target>
+            </trans-unit>
+            
+            <trans-unit id="13-1">
+            	<source>search.find</source>
+            	<target>Search</target>
+            </trans-unit>            
+            <trans-unit id="13-2">
+            	<source>search.bytitle</source>
+            	<target>Search By Article Title</target>
+            </trans-unit>
+            <trans-unit id="13-3">
+            	<source>search.bytags</source>
+            	<target>Search By Tags</target>
+            </trans-unit>
+            
+            
+        </body>
+    </file>
+</xliff>

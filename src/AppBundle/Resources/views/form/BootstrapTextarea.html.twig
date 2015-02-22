@@ -1,0 +1,13 @@
+<div class="form-group">
+	<label for="{{ id }}">{{ title }}</label>
+	<textarea
+		id="{{ id }}"
+		name="{{ full_name }}"
+		rows="{{ rows }}"
+		class="form-control">{{ value }}</textarea>
+</div>
+{% if errors is not empty %}
+	<div class="alert alert-danger" role="alert">
+		<h5>{{ form_errors(errors_form) }}</h5>
+	</div>			
+{% endif %} 

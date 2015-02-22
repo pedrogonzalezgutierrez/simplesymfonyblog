@@ -1,0 +1,20 @@
+{% for article in articles %}
+
+	<div class="list-group">
+	  <a href="{{ path('show_article', {'article': article.id}) }}" class="list-group-item">
+	    <h3 class="list-group-item-heading">{{ article.articleTitle }}</h3>
+	    <br/>
+	    <p class="list-group-item-text">{{ article.articleDescription|raw }}</p>
+	    <br/>
+		<span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color:blue"></span>&nbsp;{{ article.articleCreationDate|date("d/m/Y") }}&nbsp;
+		<span class="glyphicon glyphicon-tags" aria-hidden="true" style="color:red"></span>&nbsp;
+			{% for item in article.tags %}
+				[{{ item.tagName }}]
+			{% endfor %}
+			&nbsp;   
+		 {% if article.comments|length != 0 %}
+			 <span class="glyphicon glyphicon-comment" aria-hidden="true" style="color:green"></span>&nbsp;{{ article.comments|length }}&nbsp;
+		 {% endif %}
+	  </a>
+	</div>
+{% endfor %}

@@ -1,0 +1,7 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	{% include 'AppBundle:article:list.html.twig' with {'articles': articles} only %}
+    
+{% endblock %}

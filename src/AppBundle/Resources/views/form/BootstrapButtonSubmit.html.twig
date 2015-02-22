@@ -1,0 +1,12 @@
+{% if action == 1 %}
+	<!-- Create -->
+	<input type="submit" value="{{ 'action.create'|trans }}" class="btn btn-lg btn-success center-block" />
+	
+{% elseif action == 2 %}
+	<!-- Update -->
+	<input type="submit" value="{{ 'action.update'|trans }}" class="btn btn-lg btn-info center-block" />
+	
+{% elseif action == 4 %}
+	<!-- Search -->
+	<input type="submit" value="{{ 'search.find'|trans }}" class="btn btn-lg btn-primary center-block" />
+{% endif %}

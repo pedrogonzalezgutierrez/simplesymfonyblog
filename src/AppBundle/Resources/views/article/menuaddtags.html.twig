@@ -1,0 +1,56 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	<div class="well well-lg text-center"><h3><small>{{ 'action.add'|trans }} {{ 'entity.tag.plural'|trans }}</small></h3><h3>{{ article.articleTitle }}</h3></div>
+	<br/>
+	
+	<div class="row">
+	
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading"><h3 class="panel-title text-center">Tags in the Article</h3></div>
+				<div class="panel-body">
+					<ul class="list-group">
+	            		{% if article.tags is empty %}
+							{% include 'AppBundle:form:ThereIsNoItems.html.twig' with {'nameEntity': 'entity.tag.plural'|trans} only %}
+	            		{% else %}			            		
+							{% for item in article.tags %}
+								<li class="list-group-item">
+									{{ item.tagName }}
+									<div class="pull-right"><a href="{{ path('remove_tag_to_article', {'article':article.id, 'tag':item.id} ) }}"><button type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a></div>
+								</li>
+							{% endfor %}
+	            		{% endif %}
+  					</ul>					
+					<a href="{{ path('manage_articles') }}" style="text-decoration: none">
+						<button id="backbutton" type="button" class="center-block btn btn-lg btn-primary">{{ 'action.update'|trans }}</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="col-md-6">
+			<div class="panel panel-success">
+				<div class="panel-heading"><h3 class="panel-title text-center">All Tags</h3></div>
+				<div class="panel-body">
+					<ul class="list-group">
+	            		{% if allTags is empty %}
+							{% include 'AppBundle:form:ThereIsNoItems.html.twig' with {'nameEntity': 'entity.tag.plural'|trans} only %}
+	            		{% else %}			            		
+							{% for item in allTags %}
+								<li class="list-group-item">
+									{{ item.tagName }}
+									<div class="pull-right"><a href="{{ path('add_tag_to_article', {'article':article.id, 'tag':item.id} ) }}"><button type="button" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span></button></a></div>
+								</li>
+							{% endfor %}
+						{% endif %}						
+  					</ul>					
+				</div>
+			</div>
+		
+		</div>
+		
+	</div>
+{% endblock %}

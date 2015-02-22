@@ -1,0 +1,49 @@
+<nav>
+	<ul class="pager">
+		{% if page != 1 %}
+			{% if selectMaxResults == true %}
+				<li><a href="{{ url(absoluteurl,{'page': 1, 'maxResults': maxResults}) }}"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a></li>					
+		    	<li><a href="{{ url(absoluteurl,{'page': page-1, 'maxResults': maxResults}) }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a></li>
+		    {% else %}
+				<li><a href="{{ url(absoluteurl,{'page': 1 }) }}"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></a></li>					
+		    	<li><a href="{{ url(absoluteurl,{'page': page-1 }) }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a></li>
+		    {% endif %}
+		{% else %}
+			<li class="disabled"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span></li>					
+	    	<li class="disabled"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></li>
+		{% endif %}
+		
+    	<li>{{ page }}/{{ maxPages }}</li>
+    	
+    	{% if page != maxPages %}
+    		{% if selectMaxResults == true %}
+		    	<li><a href="{{ url(absoluteurl,{'page': page+1, 'maxResults': maxResults}) }}"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+		    	<li><a href="{{ url(absoluteurl,{'page': maxPages, 'maxResults': maxResults}) }}"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a></li>
+	    	{% else %}
+		    	<li><a href="{{ url(absoluteurl,{'page': page+1 }) }}"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></li>
+		    	<li><a href="{{ url(absoluteurl,{'page': maxPages }) }}"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></a></li>
+	    	{% endif %}
+		{% else %}
+	    	<li class="disabled"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></li>
+	    	<li class="disabled"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></li>
+	    {% endif %}
+	</ul>
+</nav>
+
+{% if selectMaxResults == true %}
+
+	<div class="text-center">
+		{% set paginatorValues = [5,10,15,25,50] %}
+		{% for paginatorValue in paginatorValues %}
+			{% if paginatorValue == maxResults %}
+				<span class="badge">{{ paginatorValue }}</span>
+			{% else %}
+				<a href="{{ url(absoluteurl,{'page': 1, 'maxResults': paginatorValue}) }}">{{ paginatorValue }}</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+{% endif %}
+
+
+
